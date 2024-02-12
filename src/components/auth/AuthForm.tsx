@@ -42,9 +42,34 @@ const AuthForm = () => {
     };
 
     return (
-        <div className="absolute top-[405px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2/3 h-5/6 bg-gray-800">
-            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-                <AuthInput label='email' />
+        <div className="absolute top-[405px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
+            <form
+                className="space-y-6 flex flex-col items-center justify-center h-full w-full lg:px-10 lg:py-10 sm:p-0"
+                onSubmit={handleSubmit(onSubmit)}
+            >
+                {variant === 'register' && (
+                    <AuthInput
+                        label="name"
+                        register={register}
+                        id="name"
+                        errors={errors}
+                        placeholder="Type Your Name"
+                    />
+                )}
+                <AuthInput
+                    label="E-mail"
+                    register={register}
+                    id="email"
+                    errors={errors}
+                    placeholder="Type Your E-Mail"
+                />
+                <AuthInput
+                    label="Password"
+                    register={register}
+                    id="password"
+                    errors={errors}
+                    placeholder="Type Your Password"
+                />
             </form>
         </div>
     );

@@ -9,6 +9,12 @@
     .bg-auth-grey {
         background-color: #0c1317;
     }
+    .bg-auth-input {
+        background-color: #2a3942;
+    }
+    .border-auth-green {
+        border-color: #00a884;
+    }
 }
 
 html,
