@@ -5,7 +5,7 @@ const pp =
 
 const AvatarSection = () => {
     return (
-        <div className="m-3 flex w-1/12 h-full items-center">
+        <div className="flex w-1/12 h-full items-center">
             <Avatar
                 alt="Remy Sharp"
                 src={pp}
