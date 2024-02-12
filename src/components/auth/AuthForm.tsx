@@ -3,8 +3,14 @@
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 //components
-import AuthInput from './AuthInput';
-import AuthButton from './AuthButton';
+import {
+    AuthInput,
+    AuthButton,
+    Divider,
+    SocialButton,
+} from '@/components/index';
+
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 type Variant = 'login' | 'register';
 
@@ -45,7 +51,7 @@ const AuthForm = () => {
     return (
         <div className="absolute top-[405px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
             <form
-                className="space-y-6 flex flex-col items-center justify-center h-full w-full lg:px-10 lg:py-10 sm:p-0"
+                className="my-5 flex flex-col items-center justify-center h-auto w-full lg:px-10 lg:py-10 mt-5"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {variant === 'register' && (
@@ -71,8 +77,28 @@ const AuthForm = () => {
                     errors={errors}
                     placeholder="Type Your Password"
                 />
-                <AuthButton isLoading={true}>Test</AuthButton>
+                <AuthButton isLoading={isLoading} type={'submit'}>
+                    Sign In
+                </AuthButton>
             </form>
+            <Divider />
+            <div className="flex justify-center mt-5 flex-col">
+                <SocialButton
+                    icon={BsGoogle}
+                    onClick={() => socialAction('google')}
+                />
+            </div>
+            <p className="text-gray-500">
+                {variant === 'login'
+                    ? "Don't have an account?"
+                    : 'Already have an account?'}
+                <button
+                    onClick={variantToggler}
+                    className="text-auth-green font-semibold ml-1"
+                >
+                    {variant === 'login' ? 'Register' : 'Login'}
+                </button>
+            </p>
         </div>
     );
 };

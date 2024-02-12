@@ -18,6 +18,9 @@
     .border-auth-green {
         border-color: #00a884;
     }
+    .text-auth-green {
+        color: #00a884;
+    }
 }
 
 html,
