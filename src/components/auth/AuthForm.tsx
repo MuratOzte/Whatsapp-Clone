@@ -4,13 +4,13 @@ import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 //components
 import {
-    AuthInput,
     AuthButton,
+    AuthInput,
     Divider,
     SocialButton,
 } from '@/components/index';
 
-import { BsGithub, BsGoogle } from 'react-icons/bs';
+import { BsGoogle } from 'react-icons/bs';
 
 type Variant = 'login' | 'register';
 
@@ -37,11 +37,17 @@ const AuthForm = () => {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setIsLoading(true);
         if (variant === 'login') {
-            console.log('Login:', data);
+            const response = await fetch('/api/get-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            console.log(response.status === 201);
+            setIsLoading(false);
         }
         if (variant === 'register') {
-            console.log('Register:', data);
-
             const response = await fetch('/api/create-user', {
                 method: 'POST',
                 headers: {
