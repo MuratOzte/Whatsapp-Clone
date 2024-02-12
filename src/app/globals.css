@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .bg-auth-green {
+        background-color: #00a884;
+    }
+    .bg-auth-grey {
+        background-color: #0c1317;
+    }
+}
+
 html,
 body,
 :root {
