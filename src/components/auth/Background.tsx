@@ -12,7 +12,7 @@ const Background = () => {
                         height={100}
                         draggable={false}
                     />
-                    <p className="text-xl tracking-tight text-gray-800">
+                    <p className="text-lg tracking-tight text-white">
                         Whatsapp Web
                     </p>
                 </div>
