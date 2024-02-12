@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 //components
 import AuthInput from './AuthInput';
+import AuthButton from './AuthButton';
 
 type Variant = 'login' | 'register';
 
@@ -70,6 +71,7 @@ const AuthForm = () => {
                     errors={errors}
                     placeholder="Type Your Password"
                 />
+                <AuthButton isLoading={true}>Test</AuthButton>
             </form>
         </div>
     );
