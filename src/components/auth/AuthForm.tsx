@@ -34,13 +34,23 @@ const AuthForm = () => {
         },
     });
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setIsLoading(true);
         if (variant === 'login') {
             console.log('Login:', data);
         }
         if (variant === 'register') {
             console.log('Register:', data);
+
+            const response = await fetch('/api/create-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            console.log(response);
+            setIsLoading(false);
         }
     };
 
@@ -49,9 +59,9 @@ const AuthForm = () => {
     };
 
     return (
-        <div className="absolute top-[405px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
+        <div className="absolute md:top-[405px] top-[340px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
             <form
-                className="my-5 flex flex-col items-center justify-center h-auto w-full lg:px-10 lg:py-10 mt-5"
+                className="mt-5 flex flex-col items-center justify-center h-auto w-full pb-5"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {variant === 'register' && (
@@ -61,6 +71,7 @@ const AuthForm = () => {
                         id="name"
                         errors={errors}
                         placeholder="Type Your Name"
+                        disabled={isLoading}
                     />
                 )}
                 <AuthInput
@@ -69,6 +80,7 @@ const AuthForm = () => {
                     id="email"
                     errors={errors}
                     placeholder="Type Your E-Mail"
+                    disabled={isLoading}
                 />
                 <AuthInput
                     label="Password"
@@ -76,23 +88,29 @@ const AuthForm = () => {
                     id="password"
                     errors={errors}
                     placeholder="Type Your Password"
+                    disabled={isLoading}
                 />
                 <AuthButton isLoading={isLoading} type={'submit'}>
                     Sign In
                 </AuthButton>
             </form>
-            <Divider />
-            <div className="flex justify-center mt-5 flex-col">
-                <SocialButton
-                    icon={BsGoogle}
-                    onClick={() => socialAction('google')}
-                />
-            </div>
-            <p className="text-gray-500">
+            {variant == 'login' && (
+                <>
+                    <Divider />
+                    <div className="flex justify-center mt-5 flex-col">
+                        <SocialButton
+                            icon={BsGoogle}
+                            onClick={() => socialAction('google')}
+                        />
+                    </div>
+                </>
+            )}
+            <p className="text-gray-500 text-xs text-center">
                 {variant === 'login'
                     ? "Don't have an account?"
                     : 'Already have an account?'}
                 <button
+                    disabled={isLoading}
                     onClick={variantToggler}
                     className="text-auth-green font-semibold ml-1"
                 >
