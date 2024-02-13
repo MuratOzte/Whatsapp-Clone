@@ -10,7 +10,7 @@ import {
     SocialButton,
 } from '@/components/index';
 
-import { BsGoogle } from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 type Variant = 'login' | 'register';
 
@@ -67,7 +67,7 @@ const AuthForm = () => {
     return (
         <div className="absolute md:top-[405px] top-[340px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
             <form
-                className="mt-5 flex flex-col items-center justify-center h-auto w-full pb-5"
+                className="md:mt-5 flex flex-col items-center justify-center h-auto w-full pb-5"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {variant === 'register' && (
@@ -107,6 +107,10 @@ const AuthForm = () => {
                         <SocialButton
                             icon={BsGoogle}
                             onClick={() => socialAction('google')}
+                        />
+                        <SocialButton
+                            icon={BsGithub}
+                            onClick={() => socialAction('github')}
                         />
                     </div>
                 </>
