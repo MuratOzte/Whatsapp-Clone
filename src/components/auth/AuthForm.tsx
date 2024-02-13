@@ -2,8 +2,9 @@
 //functiıns
 import axios from 'axios';
 //hooks
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 //components
 import {
     AuthButton,
@@ -16,10 +17,14 @@ import { BsGithub, BsGoogle } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 
 import { signIn } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 type Variant = 'login' | 'register';
 
 const AuthForm = () => {
+    const session = useSession();
+    const router = useRouter();
+
     const [variant, setVariant] = useState<Variant>('login');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +32,11 @@ const AuthForm = () => {
         setVariant(variant === 'login' ? 'register' : 'login');
     }, [variant]);
 
+    useEffect(() => {
+        if (session?.status === 'authenticated') {
+          router.push('/users')
+        }
+      }, [session?.status, router]);
     const {
         register,
         handleSubmit,
@@ -50,17 +60,24 @@ const AuthForm = () => {
                     if (res?.error) {
                         toast.error('Invalid Credentials');
                     }
-                    if (res?.ok) {
+                    if (res?.ok || !res?.error) {
                         toast.success('Logged In Successfully');
                     }
                 })
                 .finally(() => {
                     setIsLoading(false);
+                    router.push('/users');
                 });
         }
         if (variant === 'register') {
-            await axios.post('/api/register', data).catch((error) => {
-                toast.error('Something Went Wrong');
+            await axios.post('/api/register', data).then((res) => {
+                if (res.data.error) {
+                    toast.error(res.data.error);
+                }
+                if (res.data.ok) {
+                    toast.success('Registered Successfully');
+                    router.push('/users');
+                }
             });
 
             setIsLoading(false);
