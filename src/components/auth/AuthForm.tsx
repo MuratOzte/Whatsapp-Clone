@@ -68,7 +68,16 @@ const AuthForm = () => {
     };
 
     const socialAction = (data: string) => {
-        setIsLoading(true);
+        signIn(data, {
+            redirect: false,
+        }).then((res) => {
+            if (res?.error) {
+                toast.error('Something Went Wrong');
+            }
+            if (res?.ok || !res?.error) {
+                toast.success('Logged In Successfully');
+            }
+        });
     };
 
     return (
