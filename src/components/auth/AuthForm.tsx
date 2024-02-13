@@ -62,7 +62,6 @@ const AuthForm = () => {
                         toast.error('Invalid Credentials');
                     }
                     if (res?.ok || !res?.error) {
-                        console.log(res);
                         router.push('/messages');
                         toast.success('Logged In Successfully');
                     }

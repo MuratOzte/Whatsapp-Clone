@@ -14,7 +14,6 @@ const EachIcon = React.forwardRef(
         ref
     ) => {
         const handleEvent = (data: string) => {
-            console.log(data);
             if (data === 'logout') {
                 signOut({ callbackUrl: '/' });
             }
