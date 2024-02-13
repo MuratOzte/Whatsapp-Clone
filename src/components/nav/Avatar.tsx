@@ -7,9 +7,12 @@ const AvatarSection = () => {
     return (
         <div className="flex w-1/12 h-full items-center">
             <Avatar
-                alt="Remy Sharp"
+                alt="Profile Picture"
                 src={pp}
-                sx={{ width: '48px', height: '48px' }}
+                sx={{
+                    width: '48px',
+                    height: '48px',
+                }}
             />
         </div>
     );

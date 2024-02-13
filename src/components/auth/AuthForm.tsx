@@ -34,7 +34,7 @@ const AuthForm = () => {
 
     useEffect(() => {
         if (session?.status === 'authenticated') {
-          router.push('/users')
+          router.push('/messages')
         }
       }, [session?.status, router]);
     const {

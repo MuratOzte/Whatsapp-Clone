@@ -21,6 +21,15 @@
     .text-auth-green {
         color: #00a884;
     }
+    .bg-empty-state {
+        background-color: #222e35;
+    }
+    .bg-conversation {
+        background-color: #111b21;
+    }
+    .bg-search-nav {
+        background-color: #202c33;
+    }
 }
 
 html,
