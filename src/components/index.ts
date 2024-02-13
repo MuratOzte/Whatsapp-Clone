@@ -6,7 +6,6 @@ import AuthButton from './auth/AuthButton';
 import AuthForm from './auth/AuthForm';
 import AuthInput from './auth/AuthInput';
 import LoadingSpinner from './auth/LoadingSpinner';
-import SocialActions from './auth/SocialActions';
 import Divider from './auth/Divider';
 import SocialButton from './auth/SocialButton';
 
@@ -17,9 +16,8 @@ export {
     Search,
     AuthForm,
     LoadingSpinner,
-    SocialActions,
     AuthButton,
     AuthInput,
     Divider,
-    SocialButton
+    SocialButton,
 };
