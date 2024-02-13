@@ -34,9 +34,9 @@ const AuthForm = () => {
 
     useEffect(() => {
         if (session?.status === 'authenticated') {
-          router.push('/messages')
+            router.push('/messages');
         }
-      }, [session?.status, router]);
+    }, [session?.status, router]);
     const {
         register,
         handleSubmit,
@@ -61,12 +61,13 @@ const AuthForm = () => {
                         toast.error('Invalid Credentials');
                     }
                     if (res?.ok || !res?.error) {
+                        console.log(res);
+                        router.push('/messages');
                         toast.success('Logged In Successfully');
                     }
                 })
                 .finally(() => {
                     setIsLoading(false);
-                    router.push('/users');
                 });
         }
         if (variant === 'register') {
@@ -76,7 +77,7 @@ const AuthForm = () => {
                 }
                 if (res.data.ok) {
                     toast.success('Registered Successfully');
-                    router.push('/users');
+                    router.push('/messages');
                 }
             });
 
@@ -98,7 +99,7 @@ const AuthForm = () => {
     };
 
     return (
-        <div className="absolute md:top-[405px] top-[340px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
+        <div className="absolute md:top-[405px] top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
             <form
                 className="md:mt-5 flex flex-col items-center justify-center h-auto w-full pb-5"
                 onSubmit={handleSubmit(onSubmit)}
