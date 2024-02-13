@@ -25,7 +25,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
     return (
         <div className='my-3' >
             <label
-                className="text-gray-400 leading-6 font-medium text-sm mt-1 select-none"
+                className="text-gray-400 leading-6 font-medium text-[16px] mt-1 select-none"
                 htmlFor={id}
             >
                 {label}

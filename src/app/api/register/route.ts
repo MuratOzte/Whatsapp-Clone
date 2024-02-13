@@ -18,9 +18,10 @@ export async function POST(req: Request) {
                 hashedPassword,
             },
         });
-
+        
         return Response.json(user);
     } catch (e: any) {
+        console.log(e, 'Register error');
         return new Response(e, { status: 500 });
     }
 }

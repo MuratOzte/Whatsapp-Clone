@@ -1,4 +1,6 @@
 'use client';
+//functiıns
+import axios from 'axios';
 //hooks
 import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -11,6 +13,9 @@ import {
 } from '@/components/index';
 
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import toast from 'react-hot-toast';
+
+import { signIn } from 'next-auth/react';
 
 type Variant = 'login' | 'register';
 
@@ -37,25 +42,27 @@ const AuthForm = () => {
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         setIsLoading(true);
         if (variant === 'login') {
-            const response = await fetch('/api/get-user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-            console.log(response.status === 201);
-            setIsLoading(false);
+            signIn('credentials', {
+                ...data,
+                redirect: false,
+            })
+                .then((res) => {
+                    if (res?.error) {
+                        toast.error('Invalid Credentials');
+                    }
+                    if (res?.ok) {
+                        toast.success('Logged In Successfully');
+                    }
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
         }
         if (variant === 'register') {
-            const response = await fetch('/api/create-user', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+            await axios.post('/api/register', data).catch((error) => {
+                toast.error('Something Went Wrong');
             });
-            console.log(response);
+
             setIsLoading(false);
         }
     };
@@ -97,7 +104,7 @@ const AuthForm = () => {
                     disabled={isLoading}
                 />
                 <AuthButton isLoading={isLoading} type={'submit'}>
-                    Sign In
+                    {variant === 'login' ? 'Sign In' : 'Sign Up'}
                 </AuthButton>
             </form>
             {variant == 'login' && (
