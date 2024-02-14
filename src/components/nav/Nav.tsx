@@ -1,19 +1,15 @@
 'use client';
-import getCurrentUser from '@/app/actions/getCurrentUser';
 import AvatarSection from './Avatar';
-
+import getCurrentUser from '@/app/actions/getCurrentUser';
 import Icons from './Icons';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
+import useGetCurrentUser from '@/app/hooks/useGetCurrentUser';
 const Nav = () => {
     const session = useSession();
 
-    useEffect(() => {
-        if (session.data?.user) {
-            const { email } = session.data.user;
-            getCurrentUser(email!);
-        }
-    }, [session.data?.user?.email]);
+    const response = useGetCurrentUser();
+    console.log(response);
 
     return (
         <div className="w-auto bg-search-nav h-10 p-5 flex justify-between items-center">
