@@ -10,8 +10,8 @@ const AvatarSection = () => {
                 alt="Profile Picture"
                 src={pp}
                 sx={{
-                    width: '48px',
-                    height: '48px',
+                    width: '42px',
+                    height: '42px',
                 }}
             />
         </div>

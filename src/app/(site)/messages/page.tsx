@@ -1,6 +1,6 @@
 'use client';
 //components
-import { Nav, Search, Users } from '@/components/index';
+import { Nav, Search, Users, Conversation } from '@/components/index';
 //hooks
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
@@ -33,7 +33,9 @@ export default function Messages() {
                     )}
                 </AnimatePresence>
             </div>
-            <div className="bg-empty-state full w-0 md:w-4/6"></div>
+            <div className="bg-empty-state full w-0 md:w-4/6">
+                <Conversation />
+            </div>
         </div>
     );
 }
