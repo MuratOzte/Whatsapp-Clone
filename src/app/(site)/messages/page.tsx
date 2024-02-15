@@ -9,7 +9,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Messages() {
     const ui = useSelector((state: RootState) => state.ui);
-    console.log(ui.isAllUserModalOpen);
 
     return (
         <div className="h-full w-full flex flex-row">
