@@ -8,7 +8,9 @@ import AuthInput from './auth/AuthInput';
 import LoadingSpinner from './auth/LoadingSpinner';
 import Divider from './auth/Divider';
 import SocialButton from './auth/SocialButton';
-
+import Users from './users/Users';
+import UsersHeader from './users/UsersHeader';
+import UsersSearch from './users/UsersSearch';
 export {
     Nav,
     AvatarSection,
@@ -20,4 +22,7 @@ export {
     AuthInput,
     Divider,
     SocialButton,
+    Users,
+    UsersHeader,
+    UsersSearch,
 };

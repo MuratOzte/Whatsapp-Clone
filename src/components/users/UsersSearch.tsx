@@ -3,10 +3,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const Search = () => {
+const UsersSearch = () => {
     const [isFocus, setIsFocus] = useState(false);
-
     return (
         <>
             <div
@@ -54,4 +52,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export default UsersSearch;
