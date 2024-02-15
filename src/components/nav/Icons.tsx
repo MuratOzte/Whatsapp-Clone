@@ -4,6 +4,7 @@ import React from 'react';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import { RiChatNewLine } from 'react-icons/ri';
 import { SlOptionsVertical } from 'react-icons/sl';
+import { LuUsers } from "react-icons/lu";
 //packages
 import { Tooltip } from '@mui/material';
 import { signOut } from 'next-auth/react';
@@ -36,6 +37,7 @@ const EachIcon = React.forwardRef(
 const Icons = () => {
     return (
         <div className="flex gap-4">
+            <EachIcon Icon={LuUsers} title="Users" event="Users" />
             <EachIcon Icon={RiChatNewLine} title="New Chat" event="newchat" />
             <EachIcon
                 Icon={SlOptionsVertical}
