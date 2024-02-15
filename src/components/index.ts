@@ -11,6 +11,7 @@ import SocialButton from './auth/SocialButton';
 import Users from './users/Users';
 import UsersHeader from './users/UsersHeader';
 import UsersSearch from './users/UsersSearch';
+import UsersDivider from './users/Divider';
 export {
     Nav,
     AvatarSection,
@@ -25,4 +26,5 @@ export {
     Users,
     UsersHeader,
     UsersSearch,
+    UsersDivider,
 };
