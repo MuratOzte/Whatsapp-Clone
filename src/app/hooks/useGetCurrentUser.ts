@@ -11,7 +11,6 @@ const useGetCurrentUser = () => {
             const response = await getCurrentUser(session?.data?.user?.email!);
             setCurrentUser(response);
         } catch (error) {
-            // Handle error as needed
             console.error('Error fetching user data:', error);
         }
     }, [session]);

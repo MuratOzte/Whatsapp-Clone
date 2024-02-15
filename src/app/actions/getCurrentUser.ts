@@ -1,7 +1,7 @@
 
 const getCurrentUser = async (email: string) => {
     try {
-        const response = await fetch('/api/get-current-user-data', {
+        const response = await fetch('/api/get-users/get-current-user-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
