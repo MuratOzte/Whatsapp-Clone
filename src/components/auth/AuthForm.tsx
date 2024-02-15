@@ -63,7 +63,6 @@ const AuthForm = () => {
                     }
                     if (res?.ok || !res?.error) {
                         router.push('/messages');
-                        toast.success('Logged In Successfully');
                     }
                 })
                 .finally(() => {
