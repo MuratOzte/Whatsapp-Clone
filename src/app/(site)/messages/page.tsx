@@ -34,7 +34,7 @@ export default function Messages() {
                 </AnimatePresence>
             </div>
             <div className="bg-empty-state full w-0 md:w-4/6">
-                <Conversation />
+                {ui.openedMessageId && <Conversation />}
             </div>
         </div>
     );

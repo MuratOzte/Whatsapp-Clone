@@ -15,6 +15,8 @@ import UsersDivider from './users/Divider';
 import UserContainer from './users/UserContainer';
 import Conversation from './messages/Conversation';
 import ConversationHeader from './messages/ConversationHeader';
+import ConversationBody from './messages/ConversationBody';
+import ConversationFooter from './messages/ConversationFooter';
 export {
     Nav,
     AvatarSection,
@@ -33,4 +35,6 @@ export {
     UserContainer,
     Conversation,
     ConversationHeader,
+    ConversationBody,
+    ConversationFooter,
 };

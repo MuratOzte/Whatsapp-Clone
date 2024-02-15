@@ -1,8 +1,10 @@
-import ConversationHeader from './ConversationHeader';
+import { ConversationBody, ConversationHeader, ConversationFooter } from '..';
 const Conversation = () => {
     return (
-        <div className="w-full h-full bg-red-300">
+        <div className="w-full h-full">
             <ConversationHeader />
+            <ConversationBody />
+            <ConversationFooter />
         </div>
     );
 };
