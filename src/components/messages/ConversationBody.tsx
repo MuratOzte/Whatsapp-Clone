@@ -28,6 +28,9 @@ const fetcher = async (url: string) => {
 const ConversationBody = () => {
     const selectedData = useSelector((state: RootState) => state.ui);
     const [messages, setMessages] = useState<any>();
+    const [optimisticMessage, setOptimisticMessage] = useState<string | null>(
+        null
+    );
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const hash = hasher(
@@ -45,17 +48,32 @@ const ConversationBody = () => {
         return <div>Error fetching data</div>;
     }
 
+    const currentDate = new Date().toString();
+
+    const newMessage = {
+        message: 'Yeni Mesaj',
+        receiver: 'Merhaba',
+        sender: 'murat',
+    };
+
+    useEffect(() => {
+        if (selectedData.enteredMessage) {
+            setOptimisticMessage(selectedData.enteredMessage);
+        }
+    }, [selectedData.enteredMessage]);
+
     useEffect(() => {
         setMessages(data);
         console.log(data);
+        setOptimisticMessage(null);
     }, [data]);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages]);
+    }, [messages, optimisticMessage]);
 
     return (
-        <div className="bg-conversation-box w-[100%] h-[80%] overflow-hidden">
+        <div className="bg-conversation-box w-full h-[80%] overflow-hidden">
             <ul className="h-full overflow-auto">
                 <>
                     {messages &&
@@ -65,9 +83,12 @@ const ConversationBody = () => {
                                 {messages[key].message}
                             </li>
                         ))}
-                    {selectedData.enteredMessage == ''
-                        ? ''
-                        : selectedData.enteredMessage}
+                    {optimisticMessage && (
+                        <>
+                            <strong>{selectedData.currentUsername}:</strong>{' '}
+                            {optimisticMessage}
+                        </>
+                    )}
                     <div ref={messagesEndRef} />
                 </>
             </ul>
