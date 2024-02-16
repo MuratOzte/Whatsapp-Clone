@@ -40,7 +40,7 @@ const ConversationBody = () => {
     const url = `https://wp-clone-414202-default-rtdb.europe-west1.firebasedatabase.app/conversations/${hash}/messages.json`;
 
     const { data, error } = useSWR(url, fetcher, {
-        refreshInterval: 80,
+        refreshInterval: 1,
         keepPreviousData: true,
     });
 
@@ -64,16 +64,14 @@ const ConversationBody = () => {
 
     useEffect(() => {
         setMessages(data);
-        setOptimisticMessage(null);
 
-        // Yeni mesajlar geldikçe aşağı kaydır
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'end',
             });
         }
-    }, [data]);
+    }, [data,selectedData.enteredMessage]);
 
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-hidden">

@@ -6,16 +6,16 @@ export interface ui {
     openedMessageId: string | null;
     openedMessageName: string | null;
     currentUsername: string | null;
-    enteredMessage:string | null;
+    enteredMessage: string | null;
 }
 
 const initialState = {
     isAllUserModalOpen: false,
-    openedMessageId: 'seasdas',
+    openedMessageId: '',
     openedMessageName: null,
     isMessageOpened: false,
     currentUsername: '',
-    enteredMessage: ''
+    enteredMessage: '',
 };
 
 const uiSlice = createSlice({
@@ -30,7 +30,7 @@ const uiSlice = createSlice({
             state.openedMessageName = action.payload.name;
         },
         closeMessage: (state) => {
-            // state.openedMessageId = null;
+            state.openedMessageId = '';
             state.openedMessageName = null;
         },
         setCurrentUserName: (state, action: { payload: string }) => {
@@ -38,7 +38,7 @@ const uiSlice = createSlice({
         },
         setEnteredMessage: (state, action: { payload: string }) => {
             state.enteredMessage = action.payload;
-        }
+        },
     },
 });
 
