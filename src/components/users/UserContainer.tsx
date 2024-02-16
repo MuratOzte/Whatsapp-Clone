@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { AvatarSection, UsersDivider } from '..';
 //slices
 import uiSlice from '@/store/slices/uiSlice';
+import useCreateConversation from '@/app/hooks/useCreateConversation';
 
 interface userContainerProps {
     id?: string;
@@ -19,12 +20,14 @@ interface userContainerProps {
 
 const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
     const dispatch = useDispatch();
+    const createConversation = useCreateConversation();
 
     return (
         <div
             className="w-full my-3"
             onClick={() => {
                 dispatch(uiSlice.actions.openMessage({ id, name }));
+                createConversation();
                 console.log(id, name);
             }}
         >

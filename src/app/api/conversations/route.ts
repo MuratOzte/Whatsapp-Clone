@@ -58,13 +58,11 @@ export async function PATCH(request: Request) {
     const db = client.db();
     const conversationsCollection = db.collection('conversations');
 
-    // Check if the conversation exists
     const existingConversation = await conversationsCollection.findOne({
-        messageId: messageId, // Assuming messageId is present in the body
+        messageId: messageId,
     });
 
     if (existingConversation) {
-        // If conversation exists, update the messages array
         await conversationsCollection.updateOne(
             { messageId: messageId },
             {
@@ -85,3 +83,5 @@ export async function PATCH(request: Request) {
 
     return new Response(JSON.stringify(body), { status: 201 });
 }
+
+
