@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import useSWR from 'swr';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { hasher } from '@/util/hasher';
-import { useState, useRef, useEffect } from 'react';
 
 const fetcher = async (url: string) => {
     try {
@@ -64,17 +64,20 @@ const ConversationBody = () => {
 
     useEffect(() => {
         setMessages(data);
-        console.log(data);
         setOptimisticMessage(null);
-    }, [data]);
 
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, [messages, optimisticMessage]);
+        // Yeni mesajlar geldikçe aşağı kaydır
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'end',
+            });
+        }
+    }, [data]);
 
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-hidden">
-            <ul className="h-full overflow-auto">
+            <ul className="h-full overflow-auto p-2">
                 <>
                     {messages &&
                         Object.keys(messages).map((key) => (

@@ -33,6 +33,22 @@
     .bg-search-nav {
         background-color: #202c33;
     }
+    .bg-phone-header {
+        background-color: #008069;
+    }
+    .bg-phone-body {
+        background-color: #008069;
+    }
+    .bg-phone-input {
+        background-color: #008069;
+    }
+    .bg-phone-mymessage {
+        background-color: #008069;
+    }
+    .bg-phone-theymessage {
+        background-color: #ffffff;
+    }
+
 }
 
 html,

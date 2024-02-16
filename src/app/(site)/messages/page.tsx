@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 //packages
 import { motion, AnimatePresence } from 'framer-motion';
+import PhoneConversation from '@/components/phone/PhoneConversation';
 
 export default function Messages() {
     const ui = useSelector((state: RootState) => state.ui);
@@ -27,12 +28,18 @@ export default function Messages() {
                         </motion.div>
                     ) : (
                         <>
-                            <Nav />
-                            <Search />
+                            {!ui.openedMessageId && (
+                                <>
+                                    <Nav />
+                                    <Search />
+                                </>
+                            )}
+                            {ui.openedMessageId && <PhoneConversation />}
                         </>
                     )}
                 </AnimatePresence>
             </div>
+
             <div className="bg-empty-state full w-0 md:w-4/6">
                 {ui.openedMessageId && <Conversation />}
             </div>

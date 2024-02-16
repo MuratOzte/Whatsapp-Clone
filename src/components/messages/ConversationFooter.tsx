@@ -46,7 +46,7 @@ const ConversationFooter = () => {
                     onChange={(e) => {
                         setEnteredMessage(e.currentTarget.value);
                     }}
-                    className="bg-transparent w-fulls rounded-md h-full border-none focus:outline-none p-3 text-sm text-gray-300"
+                    className="bg-transparent w-10/12 ml-4 rounded-md h-full border-none focus:outline-none p-3 text-sm text-gray-300"
                 />
             </div>
             <IoSend onClick={handleSubmit} className="w-5 h-5 text-slate-400" />
