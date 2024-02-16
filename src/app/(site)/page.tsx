@@ -4,10 +4,14 @@ import Background from '@/components/auth/Background';
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import Loading from '../loading';
+import { useDispatch } from 'react-redux';
+import uiSlice from '@/store/slices/uiSlice';
 
 export default function Home() {
     const { data: session, status } = useSession();
     const [loading, setLoading] = useState(true);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (status === 'loading') {
@@ -17,6 +21,7 @@ export default function Home() {
         setLoading(false);
 
         if (session) {
+            dispatch(uiSlice.actions.setCurrentUserName(session?.user?.name!));
             window.location.href = '/messages';
         }
     }, [session, status]);

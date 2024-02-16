@@ -4,5 +4,7 @@ export const hasher = (sender: string, receier: string) => {
     for (let i = 0; i < unhashed.length; i++) {
         sum += unhashed.charCodeAt(i);
     }
+    console.log('sum:', sum, 'sender:', sender, 'receiver:', receier);
+
     return sum;
 };

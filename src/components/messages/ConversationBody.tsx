@@ -11,25 +11,25 @@ const ConversationBody = () => {
         (state: RootState) => state.ui.openedMessageName
     );
 
-    const { data, isLoading, error, isValidating, mutate } = useSwr(
-        'Messages',
-        async () => {
-            const response = await fetch('/api/get-conversation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // JSON formatında veri gönderiyorsanız
-                },
-                body: JSON.stringify({
-                    sender: session.data?.user?.name,
-                    receiver: receiver,
-                }),
-            });
-            const responseData: Messages = await response.json();
-            return responseData;
-        }
-    );
+    // const { data, isLoading, error, isValidating, mutate } = useSwr(
+    //     'Messages',
+    //     async () => {
+    //         const response = await fetch('/api/get-conversation', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json', // JSON formatında veri gönderiyorsanız
+    //             },
+    //             body: JSON.stringify({
+    //                 sender: session.data?.user?.name,
+    //                 receiver: receiver,
+    //             }),
+    //         });
+    //         const responseData: Messages = await response.json();
+    //         return responseData;
+    //     }
+    // );
 
-    console.log(data);
+    // console.log(data);
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-auto"></div>
     );

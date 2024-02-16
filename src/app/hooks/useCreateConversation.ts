@@ -1,23 +1,29 @@
-import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
-import { useSession } from 'next-auth/react';
+import { hasher } from '@/util/hasher';
+import { useSelector } from 'react-redux';
 
 const useCreateConversation = () => {
     const data = useSelector((state: RootState) => state.ui);
-    const session = useSession();
-    const createConversation = useCallback(async () => {
+
+    const createConversation = async (sender: string, receiver: string) => {
+        if (!sender || !receiver) return;
+
+        const hash = hasher(sender, receiver);
+
         try {
-            const response = await fetch('/api/conversations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    receiver: data.openedMessageName,
-                    sender: session?.data?.user?.name,
-                }),
-            });
+            const response = await fetch(
+                `https://wp-clone-414202-default-rtdb.europe-west1.firebasedatabase.app/conversations/${hash}.json`,
+                {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        receiver: data.openedMessageName,
+                        sender: data.currentUsername,
+                    }),
+                }
+            );
 
             if (!response.ok) {
                 throw new Error('Failed to create conversation');
@@ -25,7 +31,7 @@ const useCreateConversation = () => {
         } catch (error) {
             console.error('Error:', error);
         }
-    }, [data.openedMessageName, session?.data?.user?.name]);
+    };
 
     return createConversation;
 };

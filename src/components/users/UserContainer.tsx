@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 //components
 import { AvatarSection, UsersDivider } from '..';
 //slices
-import uiSlice from '@/store/slices/uiSlice';
 import useCreateConversation from '@/app/hooks/useCreateConversation';
+import uiSlice from '@/store/slices/uiSlice';
+import { useSession } from 'next-auth/react';
 
 interface userContainerProps {
     id?: string;
@@ -19,6 +20,7 @@ interface userContainerProps {
 }
 
 const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
+    const session = useSession();
     const dispatch = useDispatch();
     const createConversation = useCreateConversation();
 
@@ -27,7 +29,7 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
             className="w-full my-3"
             onClick={() => {
                 dispatch(uiSlice.actions.openMessage({ id, name }));
-                createConversation();
+                createConversation(session.data?.user?.name!, name!);
                 console.log(id, name);
             }}
         >
