@@ -17,7 +17,7 @@ const useCreateConversation = () => {
                 const response = await fetch(
                     `https://wp-clone-414202-default-rtdb.europe-west1.firebasedatabase.app/conversations/${hash}.json`,
                     {
-                        method: 'PUT',
+                        method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
                         },

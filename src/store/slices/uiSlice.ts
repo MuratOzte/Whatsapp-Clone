@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Session } from 'next-auth';
+import { set } from 'react-hook-form';
 
 export interface ui {
     isAllUserModalOpen: boolean;
@@ -7,6 +8,7 @@ export interface ui {
     openedMessageId: string | null;
     openedMessageName: string | null;
     currentUsername: string | null;
+    enteredMessage:string | null;
 }
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
     openedMessageName: null,
     isMessageOpened: false,
     currentUsername: '',
+    enteredMessage: ''
 };
 
 const uiSlice = createSlice({
@@ -34,6 +37,9 @@ const uiSlice = createSlice({
         },
         setCurrentUserName: (state, action: { payload: string }) => {
             state.currentUsername = action.payload;
+        },
+        setEnteredMessage: (state, action: { payload: string }) => {
+            state.enteredMessage = action.payload;
         }
     },
 });

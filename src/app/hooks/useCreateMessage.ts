@@ -9,9 +9,8 @@ const useCreateMessages = () => {
         sender: string,
         receiver: string | null,
         message: string,
-        date: string
     ) => {
-        if (!sender || !receiver || !message || !date) return;
+        if (!sender || !receiver || !message) return;
 
         const hash = hasher(sender, receiver);
         const time = getTurkeyDateTime()

@@ -28,7 +28,7 @@ const ConversationBody = () => {
 
     return (
         <div className="h-full w-full">
-            <div className="bg-conversation-box w-full h-5/6 overflow-auto">
+            <div className="bg-conversation-box w-full h-5/6 overflow-hidden">
                 <ul style={{ listStyleType: 'none', padding: 0 }}>
                     {messages.map((message) => (
                         <li key={message.id}>
