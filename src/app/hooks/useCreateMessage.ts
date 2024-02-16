@@ -28,7 +28,6 @@ const useCreateMessages = () => {
                         sender: sender,
                         receiver: receiver,
                         message: message,
-                        date: date,
                     }),
                 }
             );
