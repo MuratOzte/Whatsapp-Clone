@@ -34,7 +34,7 @@ export default function Messages() {
                                     <Search />
                                 </>
                             )}
-                            {ui.openedMessageId && <PhoneConversation />}
+                            {ui.openedMessageId && <Conversation />}
                         </>
                     )}
                 </AnimatePresence>
