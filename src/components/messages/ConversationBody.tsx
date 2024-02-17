@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import useSWR from 'swr';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { hasher } from '@/util/hasher';
-import { set } from 'react-hook-form';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import useSWR from 'swr';
 
 const fetcher = async (url: string) => {
     try {
@@ -93,7 +92,7 @@ const ConversationBody = () => {
                 behavior: 'smooth',
             });
         }
-    }, [optimisticMessage]); // optimisticMessage değiştiğinde scroll yap
+    }, [optimisticMessage]);
 
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-hidden">
