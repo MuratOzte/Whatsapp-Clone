@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Messages() {
     const ui = useSelector((state: RootState) => state.ui);
 
+    const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
     return (
         <div className="h-full w-full flex flex-row">
             <div className="bg-conversation h-full w-full md:w-2/6 border-r-slate-600 border-r-[0.5px] select-none">
@@ -27,8 +28,16 @@ export default function Messages() {
                         </motion.div>
                     ) : (
                         <>
-                            {ui.openedMessageId && <Conversation />}
-                            {!ui.openedMessageId && (
+                            {ui.openedMessageName && windowWidth < 768 && (
+                                <Conversation />
+                            )}
+                            {!ui.openedMessageName && (
+                                <>
+                                    <Nav />
+                                    <Search />
+                                </>
+                            )}
+                            {ui.openedMessageName && windowWidth > 768 && (
                                 <>
                                     <Nav />
                                     <Search />

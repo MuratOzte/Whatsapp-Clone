@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 import { hasher } from '@/util/hasher';
+import { set } from 'react-hook-form';
 
 const fetcher = async (url: string) => {
     try {
@@ -64,12 +65,14 @@ const ConversationBody = () => {
 
     useEffect(() => {
         setMessages(data);
+
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'end',
             });
         }
+        setOptimisticMessage(null);
     }, [data, selectedData.enteredMessage, selectedData]);
 
     return (

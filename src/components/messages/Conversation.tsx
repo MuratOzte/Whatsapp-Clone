@@ -1,9 +1,4 @@
-import { useSelector } from 'react-redux';
-import { ConversationBody, ConversationHeader, ConversationFooter } from '..';
-import { RootState } from '@/store/store';
-import { useSession } from 'next-auth/react';
-import { useCallback, useEffect } from 'react';
-import useCreateConversation from '@/app/hooks/useCreateConversation';
+import { ConversationBody, ConversationFooter, ConversationHeader } from '..';
 const Conversation = () => {
     return (
         <div className="w-full h-full"> 

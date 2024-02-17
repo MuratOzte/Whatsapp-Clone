@@ -7,7 +7,7 @@ const useGetAllContacts = () => {
 
     const fetchData = useCallback(async () => {
         try {
-            const response = await fetch('/api/get-users/get-all-contacts',{
+            const response = await fetch('/api/get-users/get-all-contacts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const useGetAllContacts = () => {
         if (session?.data?.user?.email) fetchData();
     }, [fetchData, session]);
 
-    return useMemo(() => contacts, [contacts]);
+    return useMemo(() => contacts, [session, contacts]);
 };
 
 export default useGetAllContacts;
