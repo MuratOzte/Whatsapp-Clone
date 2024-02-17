@@ -87,6 +87,14 @@ const ConversationBody = () => {
         };
     }, [data, selectedData.enteredMessage, selectedData]);
 
+    useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({
+                behavior: 'smooth',
+            });
+        }
+    }, [optimisticMessage]); // optimisticMessage değiştiğinde scroll yap
+
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-hidden">
             <ul className="h-full overflow-auto p-2">
@@ -106,8 +114,8 @@ const ConversationBody = () => {
                             </h1>
                         </div>
                     )}
-                    <div ref={messagesEndRef} />
                 </>
+                <div ref={messagesEndRef} />
             </ul>
         </div>
     );
