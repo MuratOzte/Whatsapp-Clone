@@ -3,6 +3,7 @@ import { hasher } from '@/util/hasher';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import useSWR from 'swr';
+import Message from './Message';
 
 const fetcher = async (url: string) => {
     try {
@@ -101,8 +102,15 @@ const ConversationBody = () => {
                     {messages &&
                         Object.keys(messages).map((key) => (
                             <li key={key}>
-                                <strong>{messages[key].sender}:</strong>{' '}
-                                {messages[key].message}
+                                <Message
+                                    isRecieved={
+                                        messages[key].sender ===
+                                        selectedData.openedMessageName
+                                    }
+                                    senderName={messages[key].sender}
+                                    date={key}
+                                    text={messages[key].message}
+                                />
                             </li>
                         ))}
                     {optimisticMessage && (

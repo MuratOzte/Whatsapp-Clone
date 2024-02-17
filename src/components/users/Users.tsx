@@ -12,7 +12,7 @@ const Users = () => {
         <>
             <UsersHeader />
             <UsersSearch />
-            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6">
+            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6 absolute">
                 <Suspense
                     fallback={
                         <div className="w-full h-full text-white">Loading</div>

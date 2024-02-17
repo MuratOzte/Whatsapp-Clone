@@ -43,7 +43,6 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
                 <AvatarSection />
                 <p className="ml-7 text-gray-400">{name}</p>
             </div>
-            <UsersDivider />
         </div>
     );
 };

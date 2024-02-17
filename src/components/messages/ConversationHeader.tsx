@@ -15,7 +15,7 @@ const ConversationHeader = () => {
 
     return (
         <div className="w-full h-10 p-1 md:p-5 bg-search-nav flex items-center">
-            <div className="w-[24px] h-[24px] md:w-0 md:h-0 mr-3">
+            <div className="w-[24px] h-[24px] md:hidden flex mr-3">
                 <IoMdArrowRoundBack color="gray" onClick={backButtonHandler} />
             </div>
             <AvatarSection />
