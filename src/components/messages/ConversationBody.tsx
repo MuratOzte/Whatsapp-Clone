@@ -57,9 +57,20 @@ const ConversationBody = () => {
         sender: 'murat',
     };
 
+    if (messagesEndRef.current) {
+        messagesEndRef.current.scrollIntoView({
+            behavior: 'smooth',
+        });
+    }
+
     useEffect(() => {
+        if (messagesEndRef.current) {
+            messagesEndRef.current.scrollIntoView({
+                behavior: 'smooth',
+            });
+        }
         if (selectedData.enteredMessage) {
-            setOptimisticMessage(selectedData.enteredMessage);
+            setOptimisticMessage((prev) => selectedData.enteredMessage);
         }
     }, [selectedData.enteredMessage]);
 
@@ -69,10 +80,11 @@ const ConversationBody = () => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({
                 behavior: 'smooth',
-                block: 'end',
             });
         }
-        setOptimisticMessage(null);
+        return () => {
+            setOptimisticMessage(null);
+        };
     }, [data, selectedData.enteredMessage, selectedData]);
 
     return (
@@ -87,10 +99,12 @@ const ConversationBody = () => {
                             </li>
                         ))}
                     {optimisticMessage && (
-                        <>
-                            <strong>{selectedData.currentUsername}:</strong>{' '}
-                            {optimisticMessage}
-                        </>
+                        <div>
+                            <h1>
+                                {selectedData.currentUsername}:{' '}
+                                {optimisticMessage}
+                            </h1>
+                        </div>
                     )}
                     <div ref={messagesEndRef} />
                 </>
