@@ -79,7 +79,7 @@ const AuthForm = () => {
                     router.push('/messages');
                 }
             });
-
+            router.push('/messages');
             setIsLoading(false);
         }
     };

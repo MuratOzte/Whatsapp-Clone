@@ -27,23 +27,20 @@ export default function Messages() {
                         </motion.div>
                     ) : (
                         <div>
-                            {!ui.openedMessageId && (
-                                <div className='hidden md:block' >
-                                    <Nav />
-                                    <Search />
-                                </div>
-                            )}
-                            {ui.openedMessageId && (
-                                <div className='block md:hidden' >
-                                    <Conversation />
-                                </div>
-                            )}
+                            <div className="hidden md:block">
+                                <Nav />
+                                <Search />
+                            </div>
+
+                            <div className="block md:hidden">
+                                <Conversation />
+                            </div>
                         </div>
                     )}
                 </AnimatePresence>
             </div>
 
-            <div className="bg-empty-state full w-0 md:w-4/6">
+            <div className="bg-empty-state full w-4/6">
                 {ui.openedMessageId && <Conversation />}
             </div>
         </div>
