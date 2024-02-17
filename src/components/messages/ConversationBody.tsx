@@ -64,14 +64,13 @@ const ConversationBody = () => {
 
     useEffect(() => {
         setMessages(data);
-
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({
                 behavior: 'smooth',
                 block: 'end',
             });
         }
-    }, [data,selectedData.enteredMessage,selectedData]);
+    }, [data, selectedData.enteredMessage, selectedData]);
 
     return (
         <div className="bg-conversation-box w-full h-[80%] overflow-hidden">

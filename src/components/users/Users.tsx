@@ -15,7 +15,7 @@ const Users = () => {
             <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6">
                 <Suspense
                     fallback={
-                        <div className="border-gray-300 h-20 w-full animate-spin rounded-full border-8 border-t-blue-600" />
+                        <div className="w-full h-full text-white">Loading</div>
                     }
                 >
                     {allContacts.map((contact) => (

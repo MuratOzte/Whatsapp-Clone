@@ -40,7 +40,8 @@ const ConversationFooter = () => {
         <div className="w-full h-[80px] flex items-center justify-around bg-search-nav ">
             <IoMdAdd className="w-8 h-8 text-slate-400" />
             <div className="w-8/12 md:w-10/12 h-1/2 rounded-md bg-gray-700">
-                <span className="ml-3">$</span>
+                <span className="ml-3">
+                </span>
                 <input
                     value={enteredMessage}
                     onChange={(e) => {
