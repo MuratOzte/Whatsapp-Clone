@@ -13,7 +13,7 @@ const Users = () => {
         <>
             <UsersHeader />
             <UsersSearch />
-            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6 absolute w-4/12">
+            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6 absolute w-full">
                 {!allContacts ||
                     (allContacts.length === 0 && (
                         <div className="flex items-center justify-center h-full w-full">

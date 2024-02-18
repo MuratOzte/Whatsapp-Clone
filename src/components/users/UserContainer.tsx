@@ -39,8 +39,8 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
             }}
         >
             <div className="h-[10%] w-full items-center flex ml-5">
-                <AvatarSection />
-                <p className="ml-7 text-gray-400">{name}</p>
+                <AvatarSection name={name} />
+                <p>{name}</p>
             </div>
         </div>
     );

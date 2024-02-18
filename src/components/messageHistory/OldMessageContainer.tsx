@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
 import useSWR from 'swr';
+import Loading from '../common/Loading';
 
 interface Messages {
     message: string;
@@ -33,7 +33,7 @@ const OldMessageContainer = () => {
     const session = useSession();
     const url = `https://wp-clone-414202-default-rtdb.europe-west1.firebasedatabase.app/conversations.json`;
 
-    const { data, error } = useSWR(url, fetcher, {
+    const { data, error, isLoading } = useSWR(url, fetcher, {
         refreshInterval: 1,
         keepPreviousData: true,
     });
@@ -56,16 +56,21 @@ const OldMessageContainer = () => {
 
     return (
         <>
+            {isLoading && (
+                <div className="flex items-center justify-center h-full w-full">
+                    <Loading />
+                </div>
+            )}
             {conversationss && (
                 <ul>
                     {conversationss.map((e: any, index) => (
                         <li key={`${index}`}>
-                            <div className="flex items-center mt-2 border-b-[0.5px] border-b-white">
+                            <div className="flex items-center mt-2 border-b-[0.5px] border-b-gray-500">
                                 <div className="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-search-nav rounded-full ml-2">
                                     {
                                         e.members
                                             .filter(
-                                                (member: any) =>
+                                                (member: string) =>
                                                     member !==
                                                     session.data?.user?.name
                                             )
@@ -88,6 +93,13 @@ const OldMessageContainer = () => {
                                                 ) as Messages[]
                                             )[conversationLength(e.messages)]
                                                 ?.message
+                                        }
+                                    </p>
+                                    <p className="w-full overflow-hidden text-[10px] text-gray-500 text-right">
+                                        {
+                                            Object.keys(e.messages)[
+                                                conversationLength(e.messages)
+                                            ]
                                         }
                                     </p>
                                 </div>
