@@ -36,7 +36,6 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
                     )
                 );
                 createConversation(session.data?.user?.name!, name!);
-                console.log(id, name);
             }}
         >
             <div className="h-[10%] w-full items-center flex ml-5">

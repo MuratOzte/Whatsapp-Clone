@@ -7,7 +7,6 @@ export async function POST(request: Request) {
 
     const messageId = hasher(body.sender, body.receiver);
 
-    console.log(messageId);
 
     const client = await MongoClient.connect(
         process.env.DATABASE_URL as string
@@ -20,7 +19,6 @@ export async function POST(request: Request) {
     });
 
     if (existingConversation) {
-        console.log('Conversation already exists');
     } else {
         const newConversation = {
             messageId: messageId,
@@ -49,7 +47,6 @@ export async function PATCH(request: Request) {
     };
     const formattedDate = date.toLocaleString('tr-TR', optionsa);
 
-    console.log(formattedDate);
 
     const client = await MongoClient.connect(
         process.env.DATABASE_URL as string
@@ -76,9 +73,7 @@ export async function PATCH(request: Request) {
                 },
             }
         );
-        console.log('Message added to existing conversation');
     } else {
-        console.log('Conversation not found');
     }
 
     return new Response(JSON.stringify(body), { status: 201 });
