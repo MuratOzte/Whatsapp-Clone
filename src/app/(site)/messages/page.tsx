@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 //packages
 import { motion, AnimatePresence } from 'framer-motion';
+import OldMessageContainer from '@/components/messageHistory/OldMessageContainer';
 
 export default function Messages() {
     const ui = useSelector((state: RootState) => state.ui);
@@ -35,12 +36,14 @@ export default function Messages() {
                                 <>
                                     <Nav />
                                     <Search />
+                                    <OldMessageContainer />
                                 </>
                             )}
                             {ui.openedMessageName && windowWidth > 768 && (
                                 <>
                                     <Nav />
                                     <Search />
+                                    <OldMessageContainer />
                                 </>
                             )}
                         </>
