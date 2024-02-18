@@ -47,7 +47,7 @@ const ConversationBody = () => {
         onSuccess: () => {
             if (messagesEndRef.current) {
                 messagesEndRef.current.scrollIntoView({
-                    behavior: 'smooth',
+                    behavior: 'instant',
                 });
             }
         },
@@ -58,12 +58,6 @@ const ConversationBody = () => {
     }
 
     const currentDate = new Date().toString();
-
-    if (messagesEndRef.current) {
-        messagesEndRef.current.scrollIntoView({
-            behavior: 'smooth',
-        });
-    }
 
     useEffect(() => {
         if (messagesEndRef.current) {

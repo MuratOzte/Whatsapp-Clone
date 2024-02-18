@@ -28,8 +28,8 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
         <div
             className="w-full my-3"
             onClick={() => {
-                dispatch(uiSlice.actions.openMessage({ id, name }));
                 dispatch(uiSlice.actions.toggleAllUserModal());
+                dispatch(uiSlice.actions.openMessage({ name }));
                 dispatch(
                     uiSlice.actions.setCurrentUserName(
                         session.data?.user?.name!
