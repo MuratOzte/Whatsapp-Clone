@@ -1,19 +1,15 @@
-import Avatar from '@mui/material/Avatar';
+import { useSession } from 'next-auth/react';
 
-const pp =
-    'https://media-ist1-1.cdn.whatsapp.net/v/t61.24694-24/397884028_1042568196864685_3091923269807243330_n.jpg?ccb=11-4&oh=01_AdS2npNoS5tNGpkUM8vplqSi2XlK-2TC4YoK6JXZVFYj8A&oe=65D6830D&_nc_sid=e6ed6c&_nc_cat=101';
+interface AvatarSectionProps {
+    name?: string;
+}
 
-const AvatarSection = () => {
+const AvatarSection: React.FC<AvatarSectionProps> = ({ name }) => {
+    const session = useSession();
     return (
-        <div className="flex w-1/12 h-full items-center">
-            <Avatar
-                alt="Profile Picture"
-                src={pp}
-                sx={{
-                    width: '42px',
-                    height: '42px',
-                }}
-            />
+        <div className="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-gray-700 rounded-full ml-1 mr-3">
+            {!name && session.data?.user?.name?.charAt(0)}
+            {name && name.charAt(0)}
         </div>
     );
 };

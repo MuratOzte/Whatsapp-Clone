@@ -18,7 +18,7 @@ const ConversationHeader = () => {
             <div className="w-[24px] h-[24px] md:hidden flex mr-3">
                 <IoMdArrowRoundBack color="gray" onClick={backButtonHandler} />
             </div>
-            <AvatarSection />
+            <AvatarSection name={ui.openedMessageName!} />
             <p className="text-gray-400 ml-5 md:ml-0">{ui.openedMessageName}</p>
         </div>
     );

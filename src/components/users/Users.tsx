@@ -1,10 +1,11 @@
 //components
-import { UsersHeader, UsersSearch, UserContainer } from '@/components/index';
-import { Suspense } from 'react';
+import { UserContainer, UsersHeader, UsersSearch } from '@/components/index';
 //hooks
 import useGetAllContacts from '@/app/hooks/useGetAllContacts';
 //models
 import { User } from '@/models/User';
+import Loading from '../common/Loading';
+
 const Users = () => {
     const allContacts: User[] = useGetAllContacts();
 
@@ -12,13 +13,15 @@ const Users = () => {
         <>
             <UsersHeader />
             <UsersSearch />
-            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6 absolute">
-                <Suspense
-                    fallback={
-                        <div className="w-full h-full text-white">Loading</div>
-                    }
-                >
-                    {allContacts.map((contact) => (
+            <div className="mt-1 overflow-y-auto overflow-x-hidden h-5/6 absolute w-4/12">
+                {!allContacts ||
+                    (allContacts.length === 0 && (
+                        <div className="flex items-center justify-center h-full w-full">
+                            <Loading />
+                        </div>
+                    ))}
+                {allContacts &&
+                    allContacts.map((contact) => (
                         <UserContainer
                             key={contact.id}
                             id={contact.id}
@@ -32,7 +35,6 @@ const Users = () => {
                             __v={contact.__v}
                         />
                     ))}
-                </Suspense>
             </div>
         </>
     );
