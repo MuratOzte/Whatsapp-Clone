@@ -2,6 +2,12 @@ import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import useSWR from 'swr';
 
+interface Messages {
+    message: string;
+    sender: string;
+    receiver: string;
+}
+
 const fetcher = async (url: string) => {
     try {
         const response = await fetch(url, {
@@ -44,16 +50,37 @@ const OldMessageContainer = () => {
         );
     }
 
+    const conversationLength = (data: string[]) => {
+        return Object.keys(data).length - 1;
+    };
+
     return (
         <>
             {conversationss && (
                 <ul>
                     {conversationss.map((e: any, index) => (
                         <li key={`${index}`}>
-                            {e.members.filter(
-                                (member: any) =>
-                                    member !== session.data?.user?.name
-                            )}
+                            <>
+                                <p>
+                                    {e.members.filter(
+                                        (member: any) =>
+                                            member !== session.data?.user?.name
+                                    )}
+                                </p>
+                                {console.log(
+                                    Object.keys(e.messages).length - 1
+                                )}
+                                <p>
+                                    {
+                                        (
+                                            Object.values(
+                                                e.messages
+                                            ) as Messages[]
+                                        )[conversationLength(e.messages)]
+                                            ?.message
+                                    }
+                                </p>
+                            </>
                         </li>
                     ))}
                 </ul>
