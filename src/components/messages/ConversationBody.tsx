@@ -44,6 +44,13 @@ const ConversationBody = () => {
     const { data, error } = useSWR(url, fetcher, {
         refreshInterval: 1,
         keepPreviousData: true,
+        onSuccess: () => {
+            if (messagesEndRef.current) {
+                messagesEndRef.current.scrollIntoView({
+                    behavior: 'smooth',
+                });
+            }
+        },
     });
 
     if (error) {
@@ -51,12 +58,6 @@ const ConversationBody = () => {
     }
 
     const currentDate = new Date().toString();
-
-    const newMessage = {
-        message: 'Yeni Mesaj',
-        receiver: 'Merhaba',
-        sender: 'murat',
-    };
 
     if (messagesEndRef.current) {
         messagesEndRef.current.scrollIntoView({

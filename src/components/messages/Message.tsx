@@ -20,17 +20,18 @@ const Message: React.FC<MessageProps> = ({
             }`}
         >
             {isRecieved && (
-                <div className="bg-search-nav w-fit px-3 py-1 text-gray-400 rounded-lg my-2">
-                    {text}
-                    {time}
+                <div className="bg-search-nav w-fit px-3 py-1 text-gray-400 rounded-lg my-2 flex flex-col items-start">
+                    <p className="text-sm break-words max-w-72">{text}</p>
+                    <div className="flex">
+                        <p className="text-[8px] mt-1">{time}</p>
+                    </div>
                 </div>
             )}
             {!isRecieved && (
-                <div className="bg-phone-mymessage w-fit px-3 py-1 text-gray-300 rounded-lg my-1 flex flex-col items-end">
-                    <p className="text-sm">{text}</p>
-                    <div className="flex" >
+                <div className="bg-phone-mymessage w-fit px-3 py-1 text-gray-300 rounded-lg my-1 flex flex-col items-end ">
+                    <p className="text-sm break-words max-w-72">{text}</p>
+                    <div className="flex">
                         <p className="text-[8px] mt-1">{time}</p>
-
                     </div>
                 </div>
             )}
