@@ -60,27 +60,38 @@ const OldMessageContainer = () => {
                 <ul>
                     {conversationss.map((e: any, index) => (
                         <li key={`${index}`}>
-                            <>
-                                <p>
-                                    {e.members.filter(
-                                        (member: any) =>
-                                            member !== session.data?.user?.name
-                                    )}
-                                </p>
-                                {console.log(
-                                    Object.keys(e.messages).length - 1
-                                )}
-                                <p>
+                            <div className="flex items-center mt-2 border-b-[0.5px] border-b-white">
+                                <div className="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-search-nav rounded-full ml-2">
                                     {
-                                        (
-                                            Object.values(
-                                                e.messages
-                                            ) as Messages[]
-                                        )[conversationLength(e.messages)]
-                                            ?.message
+                                        e.members
+                                            .filter(
+                                                (member: any) =>
+                                                    member !==
+                                                    session.data?.user?.name
+                                            )
+                                            .toString()[0]
                                     }
-                                </p>
-                            </>
+                                </div>
+                                <div className="w-10/12 ml-2 mb-2">
+                                    <p className=" text-lg text-gray-400">
+                                        {e.members.filter(
+                                            (member: any) =>
+                                                member !==
+                                                session.data?.user?.name
+                                        )}
+                                    </p>
+                                    <p className="w-11/12 overflow-hidden text-sm text-gray-500">
+                                        {
+                                            (
+                                                Object.values(
+                                                    e.messages
+                                                ) as Messages[]
+                                            )[conversationLength(e.messages)]
+                                                ?.message
+                                        }
+                                    </p>
+                                </div>
+                            </div>
                         </li>
                     ))}
                 </ul>
