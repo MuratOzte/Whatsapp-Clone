@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import useSWR from 'swr';
 import Message from './Message';
+import OptimisticMessage from './OptimisticMessage';
 
 const fetcher = async (url: string) => {
     try {
@@ -114,12 +115,10 @@ const ConversationBody = () => {
                             </li>
                         ))}
                     {optimisticMessage && (
-                        <div>
-                            <h1>
-                                {selectedData.currentUsername}:{' '}
-                                {optimisticMessage}
-                            </h1>
-                        </div>
+                        <OptimisticMessage
+                            text={optimisticMessage}
+                            date={currentDate}
+                        />
                     )}
                 </>
                 <div ref={messagesEndRef} />

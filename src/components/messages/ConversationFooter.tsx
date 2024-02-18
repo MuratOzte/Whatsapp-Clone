@@ -40,14 +40,12 @@ const ConversationFooter = () => {
         <div className="w-full h-[80px] flex items-center justify-around bg-search-nav ">
             <IoMdAdd className="w-8 h-8 text-slate-400" />
             <div className="w-8/12 md:w-10/12 h-1/2 rounded-md bg-gray-700">
-                <span className="ml-3">
-                </span>
                 <input
                     value={enteredMessage}
                     onChange={(e) => {
                         setEnteredMessage(e.currentTarget.value);
                     }}
-                    className="bg-transparent w-10/12 ml-0 md:ml-4 rounded-md h-full border-none focus:outline-none p-3 text-sm text-gray-300"
+                    className="bg-transparent w-full ml-0 rounded-md h-full border-none focus:outline-none p-3 text-sm text-gray-300"
                 />
             </div>
             <IoSend onClick={handleSubmit} className="w-5 h-5 text-slate-400" />
