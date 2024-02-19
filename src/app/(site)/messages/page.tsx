@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store';
 //packages
 import { motion, AnimatePresence } from 'framer-motion';
-import OldMessageContainer from '@/components/messageHistory/OldMessageContainer';
+import OldMessageContainer from '@/components/messageHistory/MessageContainer';
 import uiSlice from '@/store/slices/uiSlice';
 
 export default function Messages() {

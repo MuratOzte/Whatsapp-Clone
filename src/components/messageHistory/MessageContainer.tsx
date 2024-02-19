@@ -7,8 +7,13 @@ import Loading from '../common/Loading';
 import uiSlice from '@/store/slices/uiSlice';
 //Types
 import { RootState } from '@/store/store';
+//components
+import OldTextContent from './TextContent';
+import OldMessageTime from './MessageTime';
+import OldMessageSender from './MessageSender';
+import OldMessageAvatar from './MessageAvatar';
 
-interface Messages {
+export interface Messages {
     message: string;
     sender: string;
     receiver: string;
@@ -106,56 +111,31 @@ const OldMessageContainer = () => {
                             }}
                         >
                             <div className="flex items-center mt-2 border-b-[0.5px] border-b-gray-500">
-                                <div className="inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-search-nav rounded-full ml-2">
-                                    {
-                                        e.members
-                                            .filter(
-                                                (member: string) =>
-                                                    member !==
-                                                    session.data?.user?.name
-                                            )
-                                            .toString()[0]
-                                    }
-                                </div>
+                                <OldMessageAvatar
+                                    e={e}
+                                    session={session}
+                                    key={index + 'avatar'}
+                                />
                                 <div className="w-10/12 ml-2 mb-2">
                                     <div className="flex text-center items-center justify-between mr-5">
-                                        <p className=" text-lg text-gray-400">
-                                            {e.members.filter(
-                                                (member: any) =>
-                                                    member !==
-                                                    session.data?.user?.name
-                                            )}
-                                        </p>
-                                        <p className="w-4/12 overflow-hidden text-[16px] text-gray-500 text-right">
-                                            {e.messages &&
-                                                Object.keys(e.messages).length >
-                                                    0 &&
-                                                Object.keys(e.messages)
-                                                    [
-                                                        conversationLength(
-                                                            e.messages
-                                                        )
-                                                    ].split(' at ')[1]
-                                                    .split(':')
-                                                    .slice(0, 2)
-                                                    .join(':')}
-                                        </p>
+                                        <OldMessageSender
+                                            session={session}
+                                            e={e}
+                                            key={index + 'sender'}
+                                        />
+                                        <OldMessageTime
+                                            key={index + 'time'}
+                                            conversationLength={
+                                                conversationLength
+                                            }
+                                            e={e}
+                                        />
                                     </div>
-                                    <p className="w-11/12 overflow-hidden text-sm text-gray-500">
-                                        {e.messages &&
-                                            Object.values(e.messages) instanceof
-                                                Array &&
-                                            conversationLength(e.messages) !==
-                                                undefined &&
-                                            conversationLength(e.messages) !==
-                                                null &&
-                                            (
-                                                Object.values(
-                                                    e.messages
-                                                ) as Messages[]
-                                            )[conversationLength(e.messages)]
-                                                ?.message}
-                                    </p>
+                                    <OldTextContent
+                                        key={index + 'text'}
+                                        e={e}
+                                        conversationLength={conversationLength}
+                                    />
                                 </div>
                             </div>
                         </li>
