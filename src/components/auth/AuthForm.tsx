@@ -76,10 +76,9 @@ const AuthForm = () => {
                 }
                 if (res.data.ok) {
                     toast.success('Registered Successfully');
-                    router.push('/messages');
+                    router.refresh();
                 }
             });
-            router.push('/messages');
             setIsLoading(false);
         }
     };
@@ -100,7 +99,7 @@ const AuthForm = () => {
     return (
         <div className="absolute  md:top-[405px] top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-2/3 h-5/6 bg-gray-800">
             <form
-                className="md:mt-12 flex flex-col items-center justify-center h-auto w-full pb-5"
+                className="mt-20 md:mt-12 flex flex-col items-center justify-center h-auto w-full pb-5"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 {variant === 'register' && (

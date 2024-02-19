@@ -47,7 +47,7 @@ const ConversationBody = () => {
         onSuccess: () => {
             if (messagesEndRef.current) {
                 messagesEndRef.current.scrollIntoView({
-                    behavior: 'instant',
+                    behavior: 'smooth',
                 });
             }
         },
