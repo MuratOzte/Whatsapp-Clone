@@ -1,11 +1,24 @@
 'use client';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import uiSlice from '@/store/slices/uiSlice';
 
 const Search = () => {
+    const dispatch = useDispatch();
+
     const [isFocus, setIsFocus] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            dispatch(uiSlice.actions.setFilterTerm(searchTerm));
+        }, 100);
+
+        return () => clearTimeout(timeoutId);
+    }, [searchTerm]);
 
     return (
         <>
@@ -18,6 +31,8 @@ const Search = () => {
                     type="text"
                     placeholder="Search"
                     className="w-full p-1 pl-8 rounded-lg bg-search-nav text-white relative"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <div
                     className="absolute left-5 top-[35px] flex items-center"

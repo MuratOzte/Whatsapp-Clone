@@ -3,15 +3,15 @@ import { useSession } from 'next-auth/react';
 import { useDispatch, useSelector } from 'react-redux';
 import useSWR from 'swr';
 //components
-import Loading from '../common/Loading';
 import uiSlice from '@/store/slices/uiSlice';
+import Loading from '../common/Loading';
 //Types
 import { RootState } from '@/store/store';
 //components
-import OldTextContent from './TextContent';
-import OldMessageTime from './MessageTime';
-import OldMessageSender from './MessageSender';
 import OldMessageAvatar from './MessageAvatar';
+import OldMessageSender from './MessageSender';
+import OldMessageTime from './MessageTime';
+import OldTextContent from './TextContent';
 
 export interface Messages {
     message: string;
@@ -66,6 +66,8 @@ const OldMessageContainer = () => {
     const conversationLength = (data: string[]) => {
         return Object.keys(data).length - 1;
     };
+
+
 
     return (
         <>

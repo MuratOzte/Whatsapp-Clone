@@ -7,6 +7,7 @@ export interface ui {
     currentUsername: string | null;
     enteredMessage: string | null;
     isOptimisticMessageExist: boolean;
+    filterTerm: string;
 }
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
     currentUsername: '',
     enteredMessage: '',
     isOptimisticMessageExist: false,
+    filterTerm: '',
 };
 
 const uiSlice = createSlice({
@@ -39,6 +41,9 @@ const uiSlice = createSlice({
         },
         setIsOptimisticMessageExist: (state, action: { payload: boolean }) => {
             state.isOptimisticMessageExist = action.payload;
+        },
+        setFilterTerm: (state, action: { payload: string }) => {
+            state.filterTerm = action.payload;
         },
     },
 });
