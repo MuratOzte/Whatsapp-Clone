@@ -5,7 +5,7 @@
 A messaging application similar to WhatsApp, developed without using technologies like Socket.io or Pusher.
 
 # Live Website
-To see the project live, you can click [here](https://whatsapp-clone-iota-olive.vercel.app/messages).
+To see the project live, you can click [here](https://whatsapp-clone-iota-olive.vercel.app/).
 
 ## Example usernames and passwords for testing
 
