@@ -16,6 +16,6 @@ To see the project live, you can click [here](https://whatsapp-clone-iota-olive.
 
 ## Images
 ![alt text](public/desktop-login.png)
-![alt text](public/mobile-login.png)
 ![alt text](public/desktop-message.png)
+![alt text](public/mobile-login.png)
 ![alt text](public/mobile-message.png)
