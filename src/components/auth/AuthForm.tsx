@@ -90,9 +90,6 @@ const AuthForm = () => {
             if (res?.error) {
                 toast.error('Something Went Wrong');
             }
-            if (res?.ok || !res?.error) {
-                toast.success('Logged In Successfully');
-            }
         });
     };
 
