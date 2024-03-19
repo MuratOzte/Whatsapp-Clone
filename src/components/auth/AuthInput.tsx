@@ -32,7 +32,7 @@ const AuthInput: React.FC<AuthInputProps> = ({
         setIsFocused(true);
     };
 
-    const value = getVal(); // Bu şekilde email değerini alabilirsiniz
+    const value = getVal(); 
 
     const handleBlur = () => {
         setIsFocused(false);
