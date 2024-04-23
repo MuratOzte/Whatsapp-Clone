@@ -26,7 +26,7 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
 
     return (
         <div
-            className="w-full my-3"
+            className="md:w-1/3 w-full my-3"
             onClick={() => {
                 dispatch(uiSlice.actions.toggleAllUserModal());
                 dispatch(uiSlice.actions.openMessage({ name }));
@@ -40,8 +40,9 @@ const UserContainer: React.FC<userContainerProps> = ({ id, name }) => {
         >
             <div className="h-[10%] w-full items-center flex ml-5">
                 <AvatarSection name={name} />
-                <p>{name}</p>
+                <p className="text-gray-500">{name}</p>
             </div>
+            <UsersDivider />
         </div>
     );
 };
