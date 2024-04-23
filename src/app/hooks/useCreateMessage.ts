@@ -1,19 +1,16 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store/store';
-import { hasher } from '@/util/hasher';
 import getTurkeyDateTime from '@/util/getTime';
-const useCreateMessages = () => {
-    const data = useSelector((state: RootState) => state.ui);
+import { hasher } from '@/util/hasher';
 
+const useCreateMessages = () => {
     const createMessages = async (
         sender: string,
         receiver: string | null,
-        message: string,
+        message: string
     ) => {
         if (!sender || !receiver || !message) return;
 
         const hash = hasher(sender, receiver);
-        const time = getTurkeyDateTime()
+        const time = getTurkeyDateTime();
 
         try {
             const response = await fetch(
