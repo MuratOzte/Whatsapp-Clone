@@ -25,12 +25,12 @@ export default function Messages() {
     return (
         <div className="h-full w-full flex flex-row">
             <div className="bg-conversation h-full w-full md:w-2/6 border-r-slate-600 border-r-[0.5px] select-none">
-                <AnimatePresence>
+                <AnimatePresence mode="wait">
                     {ui.isAllUserModalOpen ? (
                         <motion.div
                             key="modal"
                             initial={{ x: -600 }}
-                            animate={{ x: 0 }}
+                            animate={{ x: ui.isAllUserModalOpen ? 0 : -600 }}
                             exit={{ x: -600 }}
                             transition={{ duration: 0.15, bounce: 0.1 }}
                             className="bg-conversation h-full w-full "
@@ -40,7 +40,7 @@ export default function Messages() {
                     ) : (
                         <>
                             {ui.openedMessageName && windowWidth < 768 && (
-                                <AnimatePresence>
+                                <AnimatePresence mode='wait'>
                                     <motion.div
                                         className="h-full w-full"
                                         initial={{ opacity: 0 }}
