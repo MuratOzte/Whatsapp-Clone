@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Analytics } from '@vercel/analytics/react';
+// import { Analytics } from '@vercel/analytics/react';
 
 import ToasterContext from './context/ToasterContext';
 import AuthContext from './context/AuthContext';
@@ -26,7 +26,7 @@ export default function RootLayout({
                     <Providers>
                         <ToasterContext />
                         {children}
-                        <Analytics />
+                        {/* <Analytics /> */}
                     </Providers>
                 </AuthContext>
             </body>
