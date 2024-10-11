@@ -1,5 +1,5 @@
 # Technologies
-[![My Skills](https://skillicons.dev/icons?i=ts,next,tailwind,prisma,mongodb,firebase,&theme=light)](https://skillicons.dev)
+![My Skills](https://go-skill-icons.vercel.app/api/icons?i=ts,next,tailwind,prisma,mongodb,firebase)
 
 # Overwiev
 A messaging application similar to WhatsApp, developed without using technologies like Socket.io or Pusher.
