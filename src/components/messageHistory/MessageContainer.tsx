@@ -118,7 +118,7 @@ const OldMessageContainer = () => {
                                     session={session}
                                     key={index + 'avatar'}
                                 />
-                                <div className="w-10/12 ml-2 mb-2">
+                                <div className="w-10/12 ml-2 mb-2 h-20">
                                     <div className="flex text-center items-center justify-between mr-5">
                                         <OldMessageSender
                                             session={session}
