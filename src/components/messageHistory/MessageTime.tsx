@@ -9,13 +9,14 @@ const OldMessageTime: React.FC<OldMessageTimeProps> = ({
 }) => {
     return (
         <p className="w-4/12 overflow-hidden text-[16px] text-gray-500 text-right">
-            {e.messages &&
+            {/* {e.messages &&
                 Object.keys(e.messages).length > 0 &&
                 Object.keys(e.messages)
                     [conversationLength(e.messages)].split(' at ')[1]
                     .split(':')
                     .slice(0, 2)
-                    .join(':')}
+                    .join(':')} */}
+            deneme
         </p>
     );
 };
