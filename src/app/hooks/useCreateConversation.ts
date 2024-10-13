@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const useCreateConversation = () => {
     const data = useSelector((state: RootState) => state.ui);
 
-    // useCallback kullanarak createConversation fonksiyonunu sarmala
     const createConversation = useCallback(
         async (sender: string, receiver: string) => {
             if (!sender || !receiver) return;
